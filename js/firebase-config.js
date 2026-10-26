@@ -1,12 +1,11 @@
-// Paste your Firebase project keys here.
-// Firebase console -> your project -> Project settings (gear) -> Your apps -> Web app -> SDK setup and configuration.
+// Firebase project keys. These are public identifiers, not secrets.
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyD2oyXSorZT0VSin9tey0fL4326CKqEcao",
+  authDomain: "movies-website-75f4d.firebaseapp.com",
+  projectId: "movies-website-75f4d",
+  storageBucket: "movies-website-75f4d.firebasestorage.app",
+  messagingSenderId: "947290359489",
+  appId: "1:947290359489:web:6b0f9cddbeb38a2d993640"
 };
 
 // The single Firestore document that holds the movie link.
