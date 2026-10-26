@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Movie night</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="stage">
+    <!-- To change the movie: replace the href below with your link. -->
+    <a class="watch" href="https://example.com" data-watch autofocus>Watch movie</a>
+  </main>
+
+  <script>
+    (function () {
+      var watch = document.querySelector('[data-watch]');
+
+      function focusWatch() {
+        try { watch.focus({ preventScroll: true }); } catch (err) { watch.focus(); }
+      }
+
+      focusWatch();
+
+      watch.addEventListener('click', function () {
+        watch.textContent = 'Opening\u2026';
+        watch.setAttribute('aria-busy', 'true');
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'Select') {
+          if (document.activeElement !== watch) {
+            event.preventDefault();
+            watch.click();
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

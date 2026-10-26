@@ -1,0 +1,86 @@
+:root {
+  --page: #ffffff;
+  --button: #111111;
+  --button-hover: #2a2a2a;
+  --button-active: #000000;
+  --focus: #ffb423;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 6vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page);
+  color: var(--button);
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.watch {
+  display: inline-block;
+  padding: clamp(24px, 3vmin, 56px) clamp(48px, 8vmin, 160px);
+  border-radius: clamp(12px, 1.6vmin, 28px);
+  background: var(--button);
+  color: #ffffff;
+  font-size: clamp(28px, 4vmin, 72px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-decoration: none;
+  transition: background-color 150ms ease, transform 150ms ease;
+  cursor: pointer;
+}
+
+.watch:hover {
+  background: var(--button-hover);
+}
+
+.watch:active {
+  background: var(--button-active);
+  transform: scale(0.985);
+}
+
+.watch:focus {
+  outline: none;
+}
+
+.watch:focus-visible {
+  outline: clamp(5px, 0.7vmin, 10px) solid var(--focus);
+  outline-offset: clamp(6px, 1vmin, 14px);
+}
+
+@media (max-width: 480px) {
+  .watch {
+    width: 100%;
+    padding-left: clamp(20px, 6vw, 48px);
+    padding-right: clamp(20px, 6vw, 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watch {
+    transition: none;
+  }
+}
