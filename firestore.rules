@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // The TV page reads this without signing in, so read is public.
+    // There is no admin login, so writes are open too. They are scoped to this
+    // one document and validated, so nobody can touch any other data.
+    match /config/movie {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasOnly(['url', 'updatedAt'])
+        && request.resource.data.url is string
+        && request.resource.data.url.size() > 0
+        && request.resource.data.url.size() < 2048
+        && request.resource.data.url.matches('^https?://[^\\s]+$')
+        && (!request.resource.data.keys().hasAny(['updatedAt'])
+            || request.resource.data.updatedAt == request.time);
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

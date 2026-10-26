@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Movie link admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="panel">
+    <h1>Movie link</h1>
+    <p class="lede">This is the link the big button on the TV opens.</p>
+
+    <form data-form novalidate>
+      <label for="movie-url">Movie link</label>
+      <input
+        id="movie-url"
+        data-url
+        name="url"
+        type="text"
+        inputmode="url"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        placeholder="https://example.com/movie"
+        required
+      >
+      <button type="submit" data-save>Save link</button>
+    </form>
+
+    <p class="status" data-status data-tone="info" role="status" aria-live="polite"></p>
+
+    <section class="current">
+      <h2>Currently on the TV</h2>
+      <p class="current-url" data-current>&mdash;</p>
+      <p class="current-time" data-updated></p>
+    </section>
+
+    <p class="foot"><a href="index.html">Open the TV page</a></p>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

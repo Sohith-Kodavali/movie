@@ -9,7 +9,12 @@
 </head>
 <body>
   <main class="stage">
-    <!-- To change the movie: replace the href below with your link. -->
+    <!--
+      The href below is the link used when Firestore has nothing saved yet.
+      Once the admin panel has saved a link, js/watch.js replaces it.
+      Admin: admin.html
+      Firebase keys: js/firebase-config.js
+    -->
     <a class="watch" href="https://example.com" data-watch autofocus>Watch movie</a>
   </main>
 
@@ -28,6 +33,11 @@
         watch.setAttribute('aria-busy', 'true');
       });
 
+      window.addEventListener('pageshow', function () {
+        watch.textContent = 'Watch movie';
+        watch.removeAttribute('aria-busy');
+      });
+
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ' || event.key === 'Select') {
           if (document.activeElement !== watch) {
@@ -38,5 +48,6 @@
       });
     })();
   </script>
+  <script type="module" src="js/watch.js"></script>
 </body>
 </html>
